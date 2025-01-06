@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+   Update page
+{% endblock %}
+
+{% block content %}
+
+    <section id="welcome">
+        <header>
+            <img src="{%  static 'images/Demos.png' %}" alt="Demos - The Author Of This Blog" />
+            <h2>Balmer's blog</h2>
+        </header>
+        <p>Navigating the World Through Logic and Creativity</p>
+    </section>
+
+    <h1 style="text-align: center;">Update Car Details</h1>
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="vin">VIN:</label>
+            <input type="text" id="vin" name="vin" value="{{ vin }}" readonly>
+        </div>
+        <!-- Loop through form fields for more control -->
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{% url 'cars-page' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+{% endblock %}
+
+{% block footer %}
+<div style="background-color: #ffd43b; padding: 20px; text-align: center; border-top: 2px solid #ccc;">
+    <h2>Disclaimer</h2>
+    <p>This project is shared for educational purposes. Feel free to use or modify it as needed.</p>
+    <p>Technologies used: Python, Django, PostgreSQL</p>
+    <p>Features: Sort order implemented with various algorithms.</p>
+</div>
+{% endblock %}

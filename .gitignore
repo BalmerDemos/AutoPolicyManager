@@ -1,0 +1,38 @@
+# Virtual environment
+venv/
+manager_env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Migrations (optional to ignore)
+car_app/migrations/
+!car_app/migrations/__init__.py
+
+# Static files
+staticfiles/
+media/
+
+# SQLite database (optional, if SQLite is used)
+*.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDE/Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc

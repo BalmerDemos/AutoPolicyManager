@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+    Auto Tracker - Car List
+{% endblock %}
+
+{% block content %}
+    <section id="welcome">
+        <header>
+            <img src="{%  static 'images/Demos.png' %}" alt="Demos - The Author Of This Blog" />
+            <h2>Balmer's blog</h2>
+        </header>
+        <p>Navigating the World Through Logic and Creativity</p>
+    </section>
+
+    <h1 style="text-align: center;">Car Details by ID - Join query all tables</h1>
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="vin">VIN:</label>
+            <input type="text" id="vin" name="vin" value="{{ vin }}" readonly>
+        </div>
+
+        <!-- Loop through form fields for more control -->
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </form>
+
+    <hr>
+
+    <h1 style="text-align: center;">Additional Information</h1>
+    <div class="info-container" style="max-width: 600px; margin: 0 auto; text-align: left;">
+        <p><strong>Model:</strong> {{ car_data.model_name }}</p>
+        <p><strong>Year:</strong> {{ car_data.model_year }}</p>
+        <p><strong>Make:</strong> {{ car_data.make_name }}</p>
+    </div>
+
+    {% if car_data.policy_number %}
+            <h1 style="text-align: center;">Insurance Policy</h1>
+            <div class="info-container" style="max-width: 600px; margin: 0 auto; text-align: left;">
+            <p><strong>Policy Number:</strong> {{ car_data.policy_number }}</p>
+            <p><strong>Company Name:</strong> {{ car_data.company_name }}</p>
+            <p><strong>Coverage Type:</strong> {{ car_data.coverage_type }}</p>
+            <p><strong>Expiration Date:</strong> {{ car_data.expiration_date }}</p>
+        </div>
+    {% else %}
+    <p style="text-align: center;">No insurance policy available for this car.</p>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+<div style="background-color: #ffd43b; padding: 20px; text-align: center; border-top: 2px solid #ccc;">
+    <h2>Disclaimer</h2>
+    <p>This project is shared for educational purposes. Feel free to use or modify it as needed.</p>
+    <p>Technologies used: Python, Django, PostgreSQL</p>
+    <p>Features: Sort order implemented with various algorithms.</p>
+</div>
+{% endblock %}

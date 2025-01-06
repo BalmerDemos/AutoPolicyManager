@@ -1,0 +1,51 @@
+{% comment %} enable the static folder root level {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap components like the carousel) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static "app.css" %}">
+  {% block css_files %}{% endblock %}
+</head>
+<body>
+  <header id="main-navigation">
+    <h1><a href="{% url "starting-page" %}">Balmer's Demos </a></h1>
+    <span id="current-time"></span>
+    <nav>
+      <a href="{% url "cars-page" %}">Cars</a>
+      <a href="{% url "contact-page" %}">Contact</a>
+    </nav>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  {% block footer %}
+  {% endblock %}
+
+
+  <script>
+    function updateTime() {
+        const now = new Date();
+        const timeString = now.toLocaleString();
+        document.getElementById("current-time").textContent = "Current Time: " + timeString;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>

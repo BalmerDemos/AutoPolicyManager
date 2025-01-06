@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Car List{% endblock %}
+
+{% block content %}
+
+<section id="welcome">
+    <header>
+        <img src="{%  static 'images/Demos.png' %}" alt="Demos - The Author Of This Blog" />
+        <h2>Balmer's blog</h2>
+    </header>
+    <p>Navigating the World Through Logic and Creativity</p>
+</section>
+
+
+{% if cars %}
+<div class="table-container">
+    <h1 style="text-align: center;">Car Details</h1>
+    <table class="car-table">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Vin Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.model_name }}</td>
+                    <td>{{ car.color }}</td>
+                    <td><strong>{{ car.vin }}</strong></td>
+                    <td class="action-buttons">
+                        <a href="{% url 'car-detail' car.car_id %}" class="btn btn-display">Display</a>
+                        <a href="{% url 'update-details' car.car_id %}" class="btn btn-update">Update</a>
+                        <form method="POST" action="{% url 'delete-car' pk=car.car_id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    {% else %}
+         <p>No cars available.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block footer %}
+<div style="background-color: #ffd43b; padding: 20px; text-align: center; border-top: 2px solid #ccc;">
+    <h2>Disclaimer</h2>
+    <p>This project is shared for educational purposes. Feel free to use or modify it as needed.</p>
+    <p>Technologies used: Python, Django, PostgreSQL</p>
+    <p>Features: Sort order implemented with various algorithms.</p>
+</div>
+{% endblock %}

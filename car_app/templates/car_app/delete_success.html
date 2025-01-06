@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Update Successful
+{% endblock %}
+
+{% block content %}
+<main class="success-container">
+    <div class="success-box">
+        <h1>Delete Successful!</h1>
+        <p>The details for the car with ID <strong>{{ pk }}</strong> were successfully deleted.</p>
+        <div class="form-actions">
+            <a href="{% url 'cars-page' %}" class="btn btn-primary">Return to Car List</a>
+            <a href="{% url 'starting-page' %}" class="btn btn-secondary">Go to Homepage</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+    Update Successful
+{% endblock %}
+
+{% block content %}
+<section id="welcome">
+    <header>
+      <img src="{%  static 'images/Demos.png' %}" alt="Demos - The Author Of This Blog" />
+      <h2>Balmer's blog</h2>
+    </header>
+    <p>Navigating the World Through Logic and Creativity</p>
+  </section>
+
+<main class="success-container">
+    <div class="success-box">
+        <h1>Update Successful!</h1>
+        <p>The details for the car with ID <strong>{{ pk }}</strong> were successfully updated.</p>
+
+        <p>Car Details:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>VIN</strong></td>
+                    <td>{{ car_data.vin }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Model</strong></td>
+                    <td>{{ car_data.model }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Color</strong></td>
+                    <td>{{ car_data.color }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Updated Fields:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>New Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for field, value in updated_data.items %}
+                <tr>
+                    <td><strong>{{ field|capfirst }}</strong></td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">No fields were updated.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="form-actions">
+            <a href="{% url 'cars-page' %}" class="btn btn-primary">Return to Car List</a>
+            <a href="{% url 'starting-page' %}" class="btn btn-secondary">Go to Homepage</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
