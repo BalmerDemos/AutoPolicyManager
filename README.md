@@ -61,8 +61,8 @@ While currently focusing on core functionality, this project lays the groundwork
 1. **Use the AutoPolicyManager project**:
    Clone the repository using the following command:
    ```bash
-   git clone https://github.com/your-username/AutoPolicy.git
-   cd AutoPolicy
+   git clone  https://github.com/BalmerDemos/AutoPolicyManager
+   cd AutoPolicyManager
 
 2. **Run the application**:
 Start the Django development server using:
@@ -112,31 +112,12 @@ Session variables are used to display update success messages.
 **Car Deletion**:
 Successfully delete a car and display its ID.
 
-# Endpoints
-- Endpoints
-- Index Page: /
-- Car List: /cars
-- Car Details by ID: /car-detail/<id>/
-- Car Update: /update-details/<id>/
-- Update Success: /update-success/<id>/
-
-# Available Endpoints
-
-**GET /cars/**
-Retrieves a list of all cars.
-
-**GET /car-detail/<id>/**
-Fetches detailed information for a specific car by ID.
-
-**POST /update-details/<id>/**
-Updates the "color" field for a specific car.
-
-**GET /update-success/<id>/**
-Displays a confirmation message for a successful update.
-
-**DELETE /delete-success/<id>/**
-Deletes a specific car by ID and confirms deletion.
-Removes an item from the database.
+# Available Endpoints (HTML Responses)
+- GET /cars/: Retrieves a list of all cars (HTML page).
+- GET /car-detail/<car_id>/: Fetches detailed information for a specific car by ID (HTML page).
+- POST /update-details/<car_id>/: Updates the "color" field for a specific car (HTML form submission).
+- GET /update-success/<car_id>/: Displays a confirmation message for a successful update (HTML page).
+- DELETE/delete-success/<car_id>/: Deletes a specific car by ID and confirms deletion (HTML page).
 
 # Folder Structure
 AutoPolicyManager/
