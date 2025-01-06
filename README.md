@@ -29,7 +29,6 @@ While currently focusing on core functionality, this project lays the groundwork
     ```bash
    https://github.com/BalmerDemos/AutoPolicyManager
 
-
     ```
 
 2. Install the required dependencies: YOU NEED TO HAVE PYTHON PRE-INSTALLED.
@@ -112,7 +111,7 @@ Session variables are used to display update success messages.
 **Car Deletion**:
 Successfully delete a car and display its ID.
 
-# Available Endpoints (HTML Responses)
+# Available Endpoints (**HTML Responses**)
 - GET /cars/: Retrieves a list of all cars (HTML page).
 - GET /car-detail/<car_id>/: Fetches detailed information for a specific car by ID (HTML page).
 - POST /update-details/<car_id>/: Updates the "color" field for a specific car (HTML form submission).
